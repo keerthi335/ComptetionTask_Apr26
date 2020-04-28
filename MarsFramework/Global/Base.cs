@@ -33,6 +33,8 @@ namespace MarsFramework.Global
 
         //public static string ReportPath = MarsResource.ReportPath;
         public static string ReportPath = projectPath + "TestReports\\ExtentReports\\MarsReports.html";
+
+        public static string ImagePath = projectPath + "ExcelData\\Image.jpg";
         #endregion
 
         #region reports

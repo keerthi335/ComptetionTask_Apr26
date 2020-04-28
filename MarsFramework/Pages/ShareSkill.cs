@@ -1,4 +1,5 @@
-﻿using MarsFramework.Global;
+﻿using AutoItX3Lib;
+using MarsFramework.Global;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MarsFramework.Pages
@@ -163,6 +165,23 @@ namespace MarsFramework.Pages
                 CreditAmount.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "CreditAmount"));
             }
 
+
+            IWebElement Sample = GlobalDefinitions.driver.FindElement(By.XPath("//i[@class='huge plus circle icon padding-25']"));
+            Sample.Click();
+
+            Thread.Sleep(1500);
+
+            AutoItX3 AutoIT = new AutoItX3();
+            AutoIT.WinActivate("Open");
+
+            Thread.Sleep(1500);
+
+            AutoIT.Send(Base.ImagePath);
+
+            Thread.Sleep(1500);
+
+            AutoIT.Send("{ENTER}");
+
             //Click on Active field
             string Activefield = GlobalDefinitions.ExcelLib.ReadData(2, "Active");
 
@@ -179,6 +198,7 @@ namespace MarsFramework.Pages
         public bool ValidateShareSkill(IWebDriver driver)
         {
 
+            driver.FindElement(By.LinkText("Manage Listings")).Click();
             By WaitCondition = By.XPath("//table[@class='ui striped table']");
 
             GlobalDefinitions.WaitForElement(GlobalDefinitions.driver, WaitCondition, 60);
